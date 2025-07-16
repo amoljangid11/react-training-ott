@@ -1,28 +1,31 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// // App.tsx   // Day - 1 Design Systems & OTT UI Constructs :
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+// import React from 'react';
+// import { GluestackUIProvider, Text, Box, Button } from '@gluestack-ui/themed';
+// import { config } from '@gluestack-ui/config';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+// const App = () => {
+//   return (
+//     <GluestackUIProvider config={config}>
+//       <Box flex={1} justifyContent="center" alignItems="center" bg="$backgroundLight0">
+//         <Text size="xl" bold>
+//           Welcome to Gluestack UI
+//         </Text>
+//         <Button mt="$4">
+//           <Text color="$white">Click Me</Text>
+//         </Button>
+//       </Box>
+//     </GluestackUIProvider>
+//   );
+// };
 
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
-  );
-}
+// export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+import React from 'react';
+import LoginScreen from './android/app/src/screens/LoginScreen';
+
+const App = () => {
+  return <LoginScreen />;
+};
 
 export default App;
