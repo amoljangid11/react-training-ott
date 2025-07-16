@@ -21,11 +21,38 @@
 
 // export default App;
 
-import React from 'react';
-import LoginScreen from './android/app/src/screens/LoginScreen';
+// import React from 'react';
+// import LoginScreen from './android/app/src/screens/LoginScreen';
 
-const App = () => {
-  return <LoginScreen />;
+// const App = () => {
+//   return <LoginScreen />;
+// };
+
+// export default App;
+
+
+// App.tsx
+
+import React from 'react';
+import { PaperProvider } from 'react-native-paper';
+import { ThemeProvider, useAppTheme } from './src/context/ThemeContext';
+import HomeScreen from './src/screens/HomeScreen';
+
+const Main = () => {
+  const { theme } = useAppTheme();
+
+  return (
+    <PaperProvider theme={theme}>
+      <HomeScreen />
+    </PaperProvider>
+  );
 };
 
-export default App;
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Main />
+    </ThemeProvider>
+  );
+}
+
