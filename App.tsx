@@ -33,26 +33,67 @@
 
 // App.tsx
 
+// import React from 'react';
+// import { PaperProvider } from 'react-native-paper';
+// import { ThemeProvider, useAppTheme } from './src/context/ThemeContext';
+// import HomeScreen from './src/screens/HomeScreen';
+
+// const Main = () => {
+//   const { theme } = useAppTheme();
+
+//   return (
+//     <PaperProvider theme={theme}>
+//       <HomeScreen />
+//     </PaperProvider>
+//   );
+// };
+
+// export default function App() {
+//   return (
+//     <ThemeProvider>
+//       <Main />
+//     </ThemeProvider>
+//   );
+// }
+
 import React from 'react';
-import { PaperProvider } from 'react-native-paper';
-import { ThemeProvider, useAppTheme } from './src/context/ThemeContext';
-import HomeScreen from './src/screens/HomeScreen';
+import { SafeAreaView } from 'react-native';
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config';
+import RailsOTT from './android/app/src/components/RailsOTT';
+import type { Category } from './android/app/src/store/types1';
 
-const Main = () => {
-  const { theme } = useAppTheme();
-
-  return (
-    <PaperProvider theme={theme}>
-      <HomeScreen />
-    </PaperProvider>
-  );
-};
+const sampleData: Category[] = [
+  {
+    id: '1',
+    name: 'Trending Now',
+    movies: [
+      { id: 'm1', title: 'Avengers', thumbnail: 'https://placehold.co/120x180' },
+      { id: 'm2', title: 'Spider-Man', thumbnail: 'https://placehold.co/120x180' },
+      { id: 'm3', title: 'Batman', thumbnail: 'https://placehold.co/120x180' },
+    ],
+  },
+  {
+    id: '2',
+    name: 'Action Thrillers',
+    movies: [
+      { id: 'm4', title: 'John Wick', thumbnail: 'https://placehold.co/120x180' },
+      { id: 'm5', title: 'Fast & Furious', thumbnail: 'https://placehold.co/120x180' },
+    ],
+  },
+];
 
 export default function App() {
+  const handleMoviePress = (movie: any) => {
+    console.log('Selected Movie:', movie);
+  };
+
   return (
-    <ThemeProvider>
-      <Main />
-    </ThemeProvider>
+    <GluestackUIProvider config={config}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <RailsOTT data={sampleData} onMoviePress={handleMoviePress} />
+      </SafeAreaView>
+    </GluestackUIProvider>
   );
 }
 
